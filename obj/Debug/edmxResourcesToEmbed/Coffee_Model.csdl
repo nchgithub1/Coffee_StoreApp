@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoffeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CoffeeEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="addCartItem" ReturnType="Collection(Int32)">
+      <Parameter Name="session_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="created_by" Mode="In" Type="String" />
+      <Parameter Name="created_at" Mode="In" Type="DateTime" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="addOrder_details" ReturnType="Collection(Int32)">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="grandtotal" Mode="In" Type="Double" />
+      <Parameter Name="AddedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addOrder_items" ReturnType="Collection(Int32)">
+      <Parameter Name="order_id" Mode="In" Type="Int32" />
+      <Parameter Name="product_id" Mode="In" Type="Int32" />
+      <Parameter Name="AddedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addpayment_details" ReturnType="Collection(Int32)">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+      <Parameter Name="GrandAmount" Mode="In" Type="Double" />
+      <Parameter Name="provider" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="NameonCard" Mode="In" Type="String" />
+      <Parameter Name="CardNumber" Mode="In" Type="String" />
+      <Parameter Name="ExpiryDateMMYY" Mode="In" Type="String" />
+      <Parameter Name="SecurityCode" Mode="In" Type="String" />
+      <Parameter Name="zipCode" Mode="In" Type="String" />
+      <Parameter Name="ShippingUserContactAddress" Mode="In" Type="Boolean" />
+      <Parameter Name="ShippingAddress" Mode="In" Type="String" />
+      <Parameter Name="AddedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addshopping_session" ReturnType="Collection(Int32)">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Double" />
+      <Parameter Name="AddedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddUser" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="first_name" Mode="In" Type="String" />
+      <Parameter Name="last_name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="ZipCode" Mode="In" Type="String" />
+      <Parameter Name="telephone" Mode="In" Type="String" />
+      <Parameter Name="AddedUserName" Mode="In" Type="String" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteCartItem" ReturnType="Collection(Int32)">
+      <Parameter Name="cartItemid" Mode="In" Type="Int32" />
+      <Parameter Name="modified_by" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteOrder_details" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteOrder_items" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="deletePayment_details" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteShopping_session" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteUser" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="first_name" Mode="In" Type="String" />
+      <Parameter Name="last_name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="telephone" Mode="In" Type="String" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCartItem" ReturnType="Collection(CoffeeModel.SelectCartItem_1)" />
+    <FunctionImport Name="SelectOrder_details" ReturnType="Collection(CoffeeModel.SelectOrder_details_1)" />
+    <FunctionImport Name="SelectOrder_items" ReturnType="Collection(CoffeeModel.SelectOrder_items_1)" />
+    <FunctionImport Name="SelectPayment_details" ReturnType="Collection(CoffeeModel.SelectPayment_details_1)" />
+    <FunctionImport Name="SelectProduct" ReturnType="Collection(CoffeeModel.SelectProduct_1)" />
+    <FunctionImport Name="SelectUser" ReturnType="Collection(CoffeeModel.SelectUser_1)" />
+    <FunctionImport Name="shopping_session" ReturnType="Collection(CoffeeModel.shopping_session_1)" />
+    <FunctionImport Name="updateCartItem" ReturnType="Collection(Int32)">
+      <Parameter Name="cartitemid" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="modified_by" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updateOrder_details" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Double" />
+      <Parameter Name="payment_id" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updateOrder_items" ReturnType="Collection(Int32)">
+      <Parameter Name="order_id" Mode="In" Type="Int32" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updatePayment_details" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="order_id" Mode="In" Type="Int32" />
+      <Parameter Name="amount" Mode="In" Type="Double" />
+      <Parameter Name="provider" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="NameonCard" Mode="In" Type="String" />
+      <Parameter Name="CardNumber" Mode="In" Type="String" />
+      <Parameter Name="ExpiryDateMMYY" Mode="In" Type="String" />
+      <Parameter Name="SecurityCode" Mode="In" Type="String" />
+      <Parameter Name="zipCode" Mode="In" Type="String" />
+      <Parameter Name="ShippingUserContactAddress" Mode="In" Type="Boolean" />
+      <Parameter Name="ShippingAddress" Mode="In" Type="String" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateUser" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="first_name" Mode="In" Type="String" />
+      <Parameter Name="last_name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="ZipCode" Mode="In" Type="String" />
+      <Parameter Name="telephone" Mode="In" Type="String" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updatShopping_session" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Double" />
+      <Parameter Name="provider" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectUserValidYN" ReturnType="Collection(CoffeeModel.SelectUserValidYN_1)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddLog" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="Error_Message" Mode="In" Type="String" />
+      <Parameter Name="AddedUserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCartItem_BySessionID" ReturnType="Collection(CoffeeModel.SelectCartItem_BySessionID_1)">
+      <Parameter Name="sessionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCartItemGrandTotal_BySessionID" ReturnType="Collection(CoffeeModel.SelectCartItemGrandTotal_BySessionID_1)">
+      <Parameter Name="sessionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectPayment_details_ById" ReturnType="Collection(CoffeeModel.SelectPayment_details_ById_1)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectUser_Byid" ReturnType="Collection(CoffeeModel.SelectUser_Byid_1)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SelectCartItem_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="session_id" Nullable="false" />
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectOrder_details_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="user_id" Nullable="false" />
+    <Property Type="Double" Name="total" Nullable="true" />
+    <Property Type="Int32" Name="payment_id" Nullable="false" />
+    <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectOrder_items_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="order_id" Nullable="false" />
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectProduct_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="category" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="shopping_session_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="user_id" Nullable="false" />
+    <Property Type="Double" Name="total" Nullable="true" />
+    <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectUserValidYN_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectUser_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="110" />
+    <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectCartItem_BySessionID_1">
+    <Property Type="Int32" Name="CartItemID" Nullable="false" />
+    <Property Type="Int32" Name="session_id" Nullable="false" />
+    <Property Type="Int32" Name="product_id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="description" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="category" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SKU" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="amount" Nullable="false" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="String" Name="TotalAmount" Nullable="false" MaxLength="42" />
+  </ComplexType>
+  <ComplexType Name="SelectCartItemGrandTotal_BySessionID_1">
+    <Property Type="Decimal" Name="Grand_Amount" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="SelectPayment_details_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="order_id" Nullable="false" />
+    <Property Type="Double" Name="amount" Nullable="false" />
+    <Property Type="String" Name="provider" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameonCard" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CardNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ExpiryDateMMYY" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SecurityCode" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="zipCode" Nullable="true" MaxLength="25" />
+    <Property Type="Boolean" Name="ShippingUserContactAddress" Nullable="false" />
+    <Property Type="String" Name="ShippingAddress" Nullable="false" MaxLength="600" />
+    <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectPayment_details_ById_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="order_id" Nullable="false" />
+    <Property Type="Double" Name="amount" Nullable="false" />
+    <Property Type="String" Name="provider" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NameonCard" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CardNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ExpiryDateMMYY" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SecurityCode" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="zipCode" Nullable="true" MaxLength="25" />
+    <Property Type="Boolean" Name="ShippingUserContactAddress" Nullable="false" />
+    <Property Type="String" Name="ShippingAddress" Nullable="false" MaxLength="600" />
+    <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectUser_Byid_1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="110" />
+    <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

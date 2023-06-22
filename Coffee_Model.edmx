@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CoffeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="usp_addCartItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="session_id" Type="int" Mode="In" />
+          <Parameter Name="product_id" Type="int" Mode="In" />
+          <Parameter Name="quantity" Type="int" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="created_at" Type="datetime" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_AddLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="Error_Message" Type="varchar" Mode="In" />
+          <Parameter Name="AddedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_addOrder_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="grandtotal" Type="float" Mode="In" />
+          <Parameter Name="AddedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_addOrder_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="order_id" Type="int" Mode="In" />
+          <Parameter Name="product_id" Type="int" Mode="In" />
+          <Parameter Name="AddedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_addpayment_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="GrandAmount" Type="float" Mode="In" />
+          <Parameter Name="provider" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="NameonCard" Type="varchar" Mode="In" />
+          <Parameter Name="CardNumber" Type="varchar" Mode="In" />
+          <Parameter Name="ExpiryDateMMYY" Type="varchar" Mode="In" />
+          <Parameter Name="SecurityCode" Type="varchar" Mode="In" />
+          <Parameter Name="zipCode" Type="varchar" Mode="In" />
+          <Parameter Name="ShippingUserContactAddress" Type="bit" Mode="In" />
+          <Parameter Name="ShippingAddress" Type="varchar" Mode="In" />
+          <Parameter Name="AddedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_addshopping_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="total" Type="float" Mode="In" />
+          <Parameter Name="AddedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="first_name" Type="varchar" Mode="In" />
+          <Parameter Name="last_name" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+          <Parameter Name="ZipCode" Type="varchar" Mode="In" />
+          <Parameter Name="telephone" Type="varchar" Mode="In" />
+          <Parameter Name="AddedUserName" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_deleteCartItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cartItemid" Type="int" Mode="In" />
+          <Parameter Name="modified_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_deleteOrder_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_deleteOrder_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_deletePayment_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_deleteShopping_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_deleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="first_name" Type="varchar" Mode="In" />
+          <Parameter Name="last_name" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="telephone" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_SelectCartItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SelectCartItem_BySessionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_SelectCartItemGrandTotal_BySessionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_SelectOrder_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SelectOrder_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SelectPayment_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SelectPayment_details_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_SelectProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SelectUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SelectUser_Byid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_SelectUserValidYN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_shopping_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_updateCartItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cartitemid" Type="int" Mode="In" />
+          <Parameter Name="quantity" Type="int" Mode="In" />
+          <Parameter Name="modified_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_updateOrder_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="total" Type="float" Mode="In" />
+          <Parameter Name="payment_id" Type="int" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_updateOrder_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="order_id" Type="int" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_updatePayment_details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="order_id" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="float" Mode="In" />
+          <Parameter Name="provider" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="NameonCard" Type="varchar" Mode="In" />
+          <Parameter Name="CardNumber" Type="varchar" Mode="In" />
+          <Parameter Name="ExpiryDateMMYY" Type="varchar" Mode="In" />
+          <Parameter Name="SecurityCode" Type="varchar" Mode="In" />
+          <Parameter Name="zipCode" Type="varchar" Mode="In" />
+          <Parameter Name="ShippingUserContactAddress" Type="bit" Mode="In" />
+          <Parameter Name="ShippingAddress" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="first_name" Type="varchar" Mode="In" />
+          <Parameter Name="last_name" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="state" Type="varchar" Mode="In" />
+          <Parameter Name="ZipCode" Type="varchar" Mode="In" />
+          <Parameter Name="telephone" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_updatShopping_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="total" Type="float" Mode="In" />
+          <Parameter Name="provider" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="ModifiedUserName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CoffeeModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoffeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CoffeeEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="addCartItem" ReturnType="Collection(Int32)">
+            <Parameter Name="session_id" Mode="In" Type="Int32" />
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
+            <Parameter Name="quantity" Mode="In" Type="Int32" />
+            <Parameter Name="created_by" Mode="In" Type="String" />
+            <Parameter Name="created_at" Mode="In" Type="DateTime" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="addOrder_details" ReturnType="Collection(Int32)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="grandtotal" Mode="In" Type="Double" />
+            <Parameter Name="AddedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addOrder_items" ReturnType="Collection(Int32)">
+            <Parameter Name="order_id" Mode="In" Type="Int32" />
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
+            <Parameter Name="AddedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addpayment_details" ReturnType="Collection(Int32)">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="GrandAmount" Mode="In" Type="Double" />
+            <Parameter Name="provider" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="NameonCard" Mode="In" Type="String" />
+            <Parameter Name="CardNumber" Mode="In" Type="String" />
+            <Parameter Name="ExpiryDateMMYY" Mode="In" Type="String" />
+            <Parameter Name="SecurityCode" Mode="In" Type="String" />
+            <Parameter Name="zipCode" Mode="In" Type="String" />
+            <Parameter Name="ShippingUserContactAddress" Mode="In" Type="Boolean" />
+            <Parameter Name="ShippingAddress" Mode="In" Type="String" />
+            <Parameter Name="AddedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addshopping_session" ReturnType="Collection(Int32)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="total" Mode="In" Type="Double" />
+            <Parameter Name="AddedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddUser" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="first_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="telephone" Mode="In" Type="String" />
+            <Parameter Name="AddedUserName" Mode="In" Type="String" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="deleteCartItem" ReturnType="Collection(Int32)">
+            <Parameter Name="cartItemid" Mode="In" Type="Int32" />
+            <Parameter Name="modified_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="deleteOrder_details" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="deleteOrder_items" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="deletePayment_details" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="deleteShopping_session" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="deleteUser" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="first_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="telephone" Mode="In" Type="String" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCartItem" ReturnType="Collection(CoffeeModel.SelectCartItem_1)" />
+          <FunctionImport Name="SelectOrder_details" ReturnType="Collection(CoffeeModel.SelectOrder_details_1)" />
+          <FunctionImport Name="SelectOrder_items" ReturnType="Collection(CoffeeModel.SelectOrder_items_1)" />
+          <FunctionImport Name="SelectPayment_details" ReturnType="Collection(CoffeeModel.SelectPayment_details_1)" />
+          <FunctionImport Name="SelectProduct" ReturnType="Collection(CoffeeModel.SelectProduct_1)" />
+          <FunctionImport Name="SelectUser" ReturnType="Collection(CoffeeModel.SelectUser_1)" />
+          <FunctionImport Name="shopping_session" ReturnType="Collection(CoffeeModel.shopping_session_1)" />
+          <FunctionImport Name="updateCartItem" ReturnType="Collection(Int32)">
+            <Parameter Name="cartitemid" Mode="In" Type="Int32" />
+            <Parameter Name="quantity" Mode="In" Type="Int32" />
+            <Parameter Name="modified_by" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updateOrder_details" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="total" Mode="In" Type="Double" />
+            <Parameter Name="payment_id" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updateOrder_items" ReturnType="Collection(Int32)">
+            <Parameter Name="order_id" Mode="In" Type="Int32" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updatePayment_details" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="order_id" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Double" />
+            <Parameter Name="provider" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="NameonCard" Mode="In" Type="String" />
+            <Parameter Name="CardNumber" Mode="In" Type="String" />
+            <Parameter Name="ExpiryDateMMYY" Mode="In" Type="String" />
+            <Parameter Name="SecurityCode" Mode="In" Type="String" />
+            <Parameter Name="zipCode" Mode="In" Type="String" />
+            <Parameter Name="ShippingUserContactAddress" Mode="In" Type="Boolean" />
+            <Parameter Name="ShippingAddress" Mode="In" Type="String" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateUser" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="first_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="state" Mode="In" Type="String" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="telephone" Mode="In" Type="String" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updatShopping_session" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="total" Mode="In" Type="Double" />
+            <Parameter Name="provider" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="ModifiedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectUserValidYN" ReturnType="Collection(CoffeeModel.SelectUserValidYN_1)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddLog" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="Error_Message" Mode="In" Type="String" />
+            <Parameter Name="AddedUserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCartItem_BySessionID" ReturnType="Collection(CoffeeModel.SelectCartItem_BySessionID_1)">
+          <Parameter Name="sessionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCartItemGrandTotal_BySessionID" ReturnType="Collection(CoffeeModel.SelectCartItemGrandTotal_BySessionID_1)">
+          <Parameter Name="sessionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectPayment_details_ById" ReturnType="Collection(CoffeeModel.SelectPayment_details_ById_1)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectUser_Byid" ReturnType="Collection(CoffeeModel.SelectUser_Byid_1)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SelectCartItem_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="session_id" Nullable="false" />
+          <Property Type="Int32" Name="product_id" Nullable="false" />
+          <Property Type="Int32" Name="quantity" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectOrder_details_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="Double" Name="total" Nullable="true" />
+          <Property Type="Int32" Name="payment_id" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectOrder_items_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="order_id" Nullable="false" />
+          <Property Type="Int32" Name="product_id" Nullable="false" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectProduct_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SKU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="shopping_session_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="Double" Name="total" Nullable="true" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectUserValidYN_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectUser_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="110" />
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="state" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectCartItem_BySessionID_1">
+          <Property Type="Int32" Name="CartItemID" Nullable="false" />
+          <Property Type="Int32" Name="session_id" Nullable="false" />
+          <Property Type="Int32" Name="product_id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SKU" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="amount" Nullable="false" />
+          <Property Type="Int32" Name="quantity" Nullable="true" />
+          <Property Type="String" Name="TotalAmount" Nullable="false" MaxLength="42" />
+        </ComplexType>
+        <ComplexType Name="SelectCartItemGrandTotal_BySessionID_1">
+          <Property Type="Decimal" Name="Grand_Amount" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="SelectPayment_details_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="order_id" Nullable="false" />
+          <Property Type="Double" Name="amount" Nullable="false" />
+          <Property Type="String" Name="provider" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NameonCard" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CardNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ExpiryDateMMYY" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SecurityCode" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="zipCode" Nullable="true" MaxLength="25" />
+          <Property Type="Boolean" Name="ShippingUserContactAddress" Nullable="false" />
+          <Property Type="String" Name="ShippingAddress" Nullable="false" MaxLength="600" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectPayment_details_ById_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="order_id" Nullable="false" />
+          <Property Type="Double" Name="amount" Nullable="false" />
+          <Property Type="String" Name="provider" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NameonCard" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CardNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ExpiryDateMMYY" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SecurityCode" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="zipCode" Nullable="true" MaxLength="25" />
+          <Property Type="Boolean" Name="ShippingUserContactAddress" Nullable="false" />
+          <Property Type="String" Name="ShippingAddress" Nullable="false" MaxLength="600" />
+          <Property Type="DateTime" Name="created_at" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectUser_Byid_1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="110" />
+          <Property Type="String" Name="first_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="last_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="state" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="telephone" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="created_at" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="modified_at" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="AddedUserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ModifiedUserName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoffeeModelStoreContainer" CdmEntityContainer="CoffeeEntities" >
+          <FunctionImportMapping FunctionImportName="addCartItem" FunctionName="CoffeeModel.Store.usp_addCartItem" />
+          <FunctionImportMapping FunctionImportName="addOrder_details" FunctionName="CoffeeModel.Store.usp_addOrder_details" />
+          <FunctionImportMapping FunctionImportName="addOrder_items" FunctionName="CoffeeModel.Store.usp_addOrder_items" />
+          <FunctionImportMapping FunctionImportName="addpayment_details" FunctionName="CoffeeModel.Store.usp_addpayment_details" />
+          <FunctionImportMapping FunctionImportName="addshopping_session" FunctionName="CoffeeModel.Store.usp_addshopping_session" />
+          <FunctionImportMapping FunctionImportName="AddUser" FunctionName="CoffeeModel.Store.usp_AddUser" />
+          <FunctionImportMapping FunctionImportName="deleteCartItem" FunctionName="CoffeeModel.Store.usp_deleteCartItem" />
+          <FunctionImportMapping FunctionImportName="deleteOrder_details" FunctionName="CoffeeModel.Store.usp_deleteOrder_details" />
+          <FunctionImportMapping FunctionImportName="deleteOrder_items" FunctionName="CoffeeModel.Store.usp_deleteOrder_items" />
+          <FunctionImportMapping FunctionImportName="deletePayment_details" FunctionName="CoffeeModel.Store.usp_deletePayment_details" />
+          <FunctionImportMapping FunctionImportName="deleteShopping_session" FunctionName="CoffeeModel.Store.usp_deleteShopping_session" />
+          <FunctionImportMapping FunctionImportName="deleteUser" FunctionName="CoffeeModel.Store.usp_deleteUser" />
+          <FunctionImportMapping FunctionImportName="SelectCartItem" FunctionName="CoffeeModel.Store.usp_SelectCartItem">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectCartItem_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectOrder_details" FunctionName="CoffeeModel.Store.usp_SelectOrder_details">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectOrder_details_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectOrder_items" FunctionName="CoffeeModel.Store.usp_SelectOrder_items">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectOrder_items_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectPayment_details" FunctionName="CoffeeModel.Store.usp_SelectPayment_details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectPayment_details_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="NameonCard" ColumnName="NameonCard" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="ExpiryDateMMYY" ColumnName="ExpiryDateMMYY" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="ShippingUserContactAddress" ColumnName="ShippingUserContactAddress" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectProduct" FunctionName="CoffeeModel.Store.usp_SelectProduct">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectProduct_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectUser" FunctionName="CoffeeModel.Store.usp_SelectUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectUser_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="shopping_session" FunctionName="CoffeeModel.Store.usp_shopping_session">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.shopping_session_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="updateCartItem" FunctionName="CoffeeModel.Store.usp_updateCartItem" />
+          <FunctionImportMapping FunctionImportName="updateOrder_details" FunctionName="CoffeeModel.Store.usp_updateOrder_details" />
+          <FunctionImportMapping FunctionImportName="updateOrder_items" FunctionName="CoffeeModel.Store.usp_updateOrder_items" />
+          <FunctionImportMapping FunctionImportName="updatePayment_details" FunctionName="CoffeeModel.Store.usp_updatePayment_details" />
+          <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="CoffeeModel.Store.usp_UpdateUser" />
+          <FunctionImportMapping FunctionImportName="updatShopping_session" FunctionName="CoffeeModel.Store.usp_updatShopping_session" />
+          <FunctionImportMapping FunctionImportName="SelectUserValidYN" FunctionName="CoffeeModel.Store.usp_SelectUserValidYN">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectUserValidYN_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddLog" FunctionName="CoffeeModel.Store.usp_AddLog" />
+          <FunctionImportMapping FunctionImportName="SelectCartItem_BySessionID" FunctionName="CoffeeModel.Store.usp_SelectCartItem_BySessionID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectCartItem_BySessionID_1">
+                <ScalarProperty Name="CartItemID" ColumnName="CartItemID" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="SKU" ColumnName="SKU" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectCartItemGrandTotal_BySessionID" FunctionName="CoffeeModel.Store.usp_SelectCartItemGrandTotal_BySessionID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectCartItemGrandTotal_BySessionID_1">
+                <ScalarProperty Name="Grand_Amount" ColumnName="Grand_Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectPayment_details_ById" FunctionName="CoffeeModel.Store.usp_SelectPayment_details_ById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectPayment_details_ById_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="NameonCard" ColumnName="NameonCard" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="ExpiryDateMMYY" ColumnName="ExpiryDateMMYY" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="ShippingUserContactAddress" ColumnName="ShippingUserContactAddress" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectUser_Byid" FunctionName="CoffeeModel.Store.usp_SelectUser_Byid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CoffeeModel.SelectUser_Byid_1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+                <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

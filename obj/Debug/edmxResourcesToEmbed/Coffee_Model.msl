@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoffeeModelStoreContainer" CdmEntityContainer="CoffeeEntities">
+    <FunctionImportMapping FunctionImportName="addCartItem" FunctionName="CoffeeModel.Store.usp_addCartItem" />
+    <FunctionImportMapping FunctionImportName="addOrder_details" FunctionName="CoffeeModel.Store.usp_addOrder_details" />
+    <FunctionImportMapping FunctionImportName="addOrder_items" FunctionName="CoffeeModel.Store.usp_addOrder_items" />
+    <FunctionImportMapping FunctionImportName="addpayment_details" FunctionName="CoffeeModel.Store.usp_addpayment_details" />
+    <FunctionImportMapping FunctionImportName="addshopping_session" FunctionName="CoffeeModel.Store.usp_addshopping_session" />
+    <FunctionImportMapping FunctionImportName="AddUser" FunctionName="CoffeeModel.Store.usp_AddUser" />
+    <FunctionImportMapping FunctionImportName="deleteCartItem" FunctionName="CoffeeModel.Store.usp_deleteCartItem" />
+    <FunctionImportMapping FunctionImportName="deleteOrder_details" FunctionName="CoffeeModel.Store.usp_deleteOrder_details" />
+    <FunctionImportMapping FunctionImportName="deleteOrder_items" FunctionName="CoffeeModel.Store.usp_deleteOrder_items" />
+    <FunctionImportMapping FunctionImportName="deletePayment_details" FunctionName="CoffeeModel.Store.usp_deletePayment_details" />
+    <FunctionImportMapping FunctionImportName="deleteShopping_session" FunctionName="CoffeeModel.Store.usp_deleteShopping_session" />
+    <FunctionImportMapping FunctionImportName="deleteUser" FunctionName="CoffeeModel.Store.usp_deleteUser" />
+    <FunctionImportMapping FunctionImportName="SelectCartItem" FunctionName="CoffeeModel.Store.usp_SelectCartItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectCartItem_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectOrder_details" FunctionName="CoffeeModel.Store.usp_SelectOrder_details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectOrder_details_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectOrder_items" FunctionName="CoffeeModel.Store.usp_SelectOrder_items">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectOrder_items_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectPayment_details" FunctionName="CoffeeModel.Store.usp_SelectPayment_details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectPayment_details_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="provider" ColumnName="provider" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="NameonCard" ColumnName="NameonCard" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="ExpiryDateMMYY" ColumnName="ExpiryDateMMYY" />
+          <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+          <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+          <ScalarProperty Name="ShippingUserContactAddress" ColumnName="ShippingUserContactAddress" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectProduct" FunctionName="CoffeeModel.Store.usp_SelectProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectProduct_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectUser" FunctionName="CoffeeModel.Store.usp_SelectUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectUser_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="shopping_session" FunctionName="CoffeeModel.Store.usp_shopping_session">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.shopping_session_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="updateCartItem" FunctionName="CoffeeModel.Store.usp_updateCartItem" />
+    <FunctionImportMapping FunctionImportName="updateOrder_details" FunctionName="CoffeeModel.Store.usp_updateOrder_details" />
+    <FunctionImportMapping FunctionImportName="updateOrder_items" FunctionName="CoffeeModel.Store.usp_updateOrder_items" />
+    <FunctionImportMapping FunctionImportName="updatePayment_details" FunctionName="CoffeeModel.Store.usp_updatePayment_details" />
+    <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="CoffeeModel.Store.usp_UpdateUser" />
+    <FunctionImportMapping FunctionImportName="updatShopping_session" FunctionName="CoffeeModel.Store.usp_updatShopping_session" />
+    <FunctionImportMapping FunctionImportName="SelectUserValidYN" FunctionName="CoffeeModel.Store.usp_SelectUserValidYN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectUserValidYN_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddLog" FunctionName="CoffeeModel.Store.usp_AddLog" />
+    <FunctionImportMapping FunctionImportName="SelectCartItem_BySessionID" FunctionName="CoffeeModel.Store.usp_SelectCartItem_BySessionID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectCartItem_BySessionID_1">
+          <ScalarProperty Name="CartItemID" ColumnName="CartItemID" />
+          <ScalarProperty Name="session_id" ColumnName="session_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectCartItemGrandTotal_BySessionID" FunctionName="CoffeeModel.Store.usp_SelectCartItemGrandTotal_BySessionID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectCartItemGrandTotal_BySessionID_1">
+          <ScalarProperty Name="Grand_Amount" ColumnName="Grand_Amount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectPayment_details_ById" FunctionName="CoffeeModel.Store.usp_SelectPayment_details_ById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectPayment_details_ById_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="provider" ColumnName="provider" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="NameonCard" ColumnName="NameonCard" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="ExpiryDateMMYY" ColumnName="ExpiryDateMMYY" />
+          <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+          <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+          <ScalarProperty Name="ShippingUserContactAddress" ColumnName="ShippingUserContactAddress" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectUser_Byid" FunctionName="CoffeeModel.Store.usp_SelectUser_Byid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CoffeeModel.SelectUser_Byid_1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AddedUserName" ColumnName="AddedUserName" />
+          <ScalarProperty Name="ModifiedUserName" ColumnName="ModifiedUserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
